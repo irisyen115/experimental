@@ -1,16 +1,17 @@
-CC = gcc
-CFLAGS = -Wall -pthread
+CXX = g++
+CXXFLAGS = -std=c++11 -pthread
+TARGETS = mutex deadlock rc
 
-all: deadlock mutex rc
+all: $(TARGETS)
 
-deadlock: deadlock.c
-	$(CC) $(CFLAGS) -o deadlock deadlock.cpp
+mutex: mutex.cpp
+	$(CXX) $(CXXFLAGS) -o mutex mutex.cpp
 
-mutex: mutex.c
-	$(CC) $(CFLAGS) -o mutex mutex.cpp
+deadlock: deadlock.cpp
+	$(CXX) $(CXXFLAGS) -o deadlock deadlock.cpp
 
-rc: rc.c
-	$(CC) $(CFLAGS) -o rc rc.cpp
+rc: rc.cpp
+	$(CXX) $(CXXFLAGS) -o rc rc.cpp
 
 clean:
-	rm -f deadlock mutex rc
+	rm -f $(TARGETS)
